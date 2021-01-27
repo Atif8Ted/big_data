@@ -94,3 +94,58 @@ sqoop import --connect jdbc:mysql://localhost/retail_db \
 --target-dir /user/cloudera/new_customer_sequence \
 --as-sequencefile
 ```
+### Sqoop import with compressions
+* ##### Default is `gzip` format
+```bash
+sqoop import --connect jdbc:mysql://localhost/retail_db \
+--username root \
+--password cloudera \
+--table customers \
+--target-dir /user/cloudera/new_customer_compressed \
+--compress
+```
+* #### cmopressing in snappy format
+```bash
+sqoop import --connect jdbc:mysql://localhost/retail_db \
+--username root \
+--password cloudera \
+--table customers \
+--target-dir /user/cloudera/new_customer_compressed_snappy \
+--compress \
+--compression-codec snappy
+```
+* #### cmopressing in deflate format
+```bash
+sqoop import --connect jdbc:mysql://localhost/retail_db \
+--username root \
+--password cloudera \
+--table customers \
+--target-dir /user/cloudera/new_customer_compressed_deflate \
+--compress \
+--compression-codec deflate
+```
+* #### cmopressing in bzip format
+```bash
+sqoop import --connect jdbc:mysql://localhost/retail_db \
+--username root \
+--password cloudera \
+--table customers \
+--target-dir /user/cloudera/new_customer_compressed_bzip \
+--compress \
+--compression-codec bzip2
+```
+
+* #### cmopressing in lz4 format
+```bash
+sqoop import --connect jdbc:mysql://localhost/retail_db \
+--username root \
+--password cloudera \
+--table customers \
+--target-dir /user/cloudera/new_customer_compressed_lz4 \
+--compress \
+--compression-codec lz4
+```
+### `NOTE` : lz4 compression is considered a good choice since ,
+* it provides good compression.
+* It is splittable.
+* It is fast to compress and decompress.
