@@ -70,3 +70,40 @@ sqoop import-all-tables \
 --password cloudera \
 --exclude-tables cities,countries
 ```
+
+## Incremental Import
+Activate Sqoop’s incremental feature by specifying the --incremental parameter. The parameter’s value will be the type of incremental import. When your table is only getting new rows and the existing ones are not changed, use the append mode.
+
+Incremental import also requires two additional parameters: --check-column indicates a column name that should be checked for newly appended data, and --last-value contains the last value that successfully imported into Hadoop.
+
+    sqoop import \
+      --connect jdbc:mysql://mysql.example.com/sqoop \
+      --username sqoop \
+      --password sqoop \
+      --table visits \
+      --incremental append \
+      --check-column id \
+      --last-value 1
+## Incrementally Importing Mutable Data
+    sqoop import \
+      --connect jdbc:mysql://mysql.example.com/sqoop \
+      --username sqoop \
+      --password sqoop \
+      --table visits \
+      --incremental lastmodified \
+      --check-column last_update_date \
+      --last-value "2013-05-22 01:01:01"
+
+## Importing Data from Two Tables
+    sqoop import \
+      --connect jdbc:mysql://mysql.example.com/sqoop \
+      --username sqoop \
+      --password sqoop \
+      --query 'SELECT normcities.id, \
+                      countries.country, \
+                      normcities.city \
+                      FROM normcities \
+                      JOIN countries USING(country_id) \
+                      WHERE $CONDITIONS' \
+      --split-by id \
+      --target-dir cities
