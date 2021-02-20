@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Feb 20 18:14:10 IST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0177-bf78-066d-00000507a000 
+on database directory /home/atif/PycharmProjects/spark_etl_implementation/big_data_tut/spark/metastore_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@67424e82 
+Loaded from file:/home/atif/PycharmProjects/spark_etl_implementation/venv/lib/python3.6/site-packages/pyspark/jars/derby-10.12.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.10+9-suse-lp152.2.9.1-x8664
+user.dir=/home/atif/PycharmProjects/spark_etl_implementation/big_data_tut/spark
+os.name=Linux
+os.arch=amd64
+os.version=5.3.18-lp152.63-default
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

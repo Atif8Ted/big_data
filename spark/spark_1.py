@@ -25,6 +25,13 @@ if __name__ == '__main__':
         logging.info(filter_df.show())
         groupby_df = filter_df.groupBy("Country").count()
         logging.info(groupby_df.show())
+        print(groupby_df.collect())
+        # repartitonng our dataframe
+        partitioned_df = filter_df.repartition(2)
+        group_by_df = partitioned_df.groupBy('Country').count()
+        print(group_by_df.show())
+        input("")
+
         spark.stop()
     except Exception as e:
         print(e)
