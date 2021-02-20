@@ -15,9 +15,9 @@ if __name__ == '__main__':
         print(df.printSchema())
         log_reg = r'^(\S+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(\S+) (\S+) (\S+)" (\d{3}) (\S+) "(\S+)" "([^"]*)'
         logs_df = df.select(regexp_extract('value', log_reg, 1).alias('ip'),
-                                regexp_extract('value', log_reg, 4).alias('date'),
-                                regexp_extract('value', log_reg, 6).alias('request'),
-                                regexp_extract('value', log_reg, 10).alias('referrer'))
+                            regexp_extract('value', log_reg, 4).alias('date'),
+                            regexp_extract('value', log_reg, 6).alias('request'),
+                            regexp_extract('value', log_reg, 10).alias('referrer'))
         print(df.show(truncate=False))
         print(logs_df.show(truncate=False))
     except Exception as e:
